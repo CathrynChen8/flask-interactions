@@ -24,13 +24,13 @@ def close_auth_db(e=None):
         db.close()
 
 # here's how we could initialize our SQL database using Flask
-def init_auth_db():
+def init_auth_db(): #defines schema for our users database
     db = get_auth_db()
 
     with current_app.open_resource('init.sql') as f:
         db.executescript(f.read().decode('utf8'))
 
-@click.command('init-auth-db')
+@click.command('init-auth-db') #if the command / only want once
 @with_appcontext
 def init_auth_db_command():
     """Clear the existing data and create new tables."""
