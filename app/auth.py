@@ -44,9 +44,9 @@ def main():
 
 @auth_bp.route('/login/', methods=['POST', 'GET'])
 def login():
-    if 'user_id' in session:
+    if 'user_id' in session: #like g
         flash('Already logged in.')
-        return redirect(url_for('auth.main'))
+        return redirect(url_for('auth.main')) #unique, if quit then lose the information
 
     if request.method == 'POST':
         username = request.form['username']
